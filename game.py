@@ -25,13 +25,10 @@ class GameScreen:
         self.start_time = 0
         self.elapsed_time = 0
 
-        # =================================================
-
         self.load_words()
         self.prepare_grid()
         self.create_widgets()
 
-    # =====================================================
 
     def load_words(self):
 
@@ -67,7 +64,7 @@ class GameScreen:
                             "number": len(self.words) + 1
                         })
 
-    # =====================================================
+
 
     def prepare_grid(self):
 
@@ -120,17 +117,14 @@ class GameScreen:
 
         self.timer_label.pack(pady=5)
 
-        # ==================================================
 
         main_frame = tk.Frame(self.root)
         main_frame.pack(pady=10)
 
-        # ==================================================
 
         grid_frame = tk.Frame(main_frame)
         grid_frame.pack(side="left", padx=20)
 
-        # ==================================================
 
         for i in range(GRID_SIZE):
 
@@ -285,7 +279,6 @@ class GameScreen:
 
         check_btn.pack(pady=20)
 
-    # =====================================================
 
     def start_timer(self):
 
@@ -294,7 +287,6 @@ class GameScreen:
 
         self.update_timer()
 
-    # =====================================================
 
     def update_timer(self):
 
@@ -313,13 +305,11 @@ class GameScreen:
 
             self.root.after(1000, self.update_timer)
 
-    # =====================================================
 
     def stop_timer(self):
 
         self.timer_started = False
 
-    # =====================================================
 
     def get_time_string(self):
 
@@ -328,7 +318,6 @@ class GameScreen:
 
         return f"{minutes:02}:{seconds:02}"
 
-    # =====================================================
 
     def get_number_at(self, row, col):
 
@@ -342,7 +331,6 @@ class GameScreen:
 
         return None
 
-    # =====================================================
 
     def on_key_release(self, event, pos):
 
@@ -351,7 +339,6 @@ class GameScreen:
         if not self.timer_started:
             self.start_timer()
 
-        # ======================================================
 
         entry = self.entries[pos]
 
@@ -368,7 +355,6 @@ class GameScreen:
         if text:
             self.focus_next(pos)
 
-    # =====================================================
 
     def focus_next(self, pos):
 
@@ -385,7 +371,6 @@ class GameScreen:
                 self.entries[p].focus_set()
                 break
 
-    # =====================================================
 
     def on_entry_focus(self, pos):
 
@@ -397,7 +382,6 @@ class GameScreen:
                 self.highlight_word(word)
                 break
 
-    # =====================================================
 
     def is_in_word(self, pos, word):
 
@@ -422,7 +406,6 @@ class GameScreen:
                 wr <= r < wr + length
             )
 
-    # =====================================================
 
     def highlight_word(self, word):
 
@@ -448,14 +431,12 @@ class GameScreen:
                     bg=SELECTED_COLOR
                 )
 
-    # =====================================================
 
     def clear_highlight(self):
 
         for entry in self.entries.values():
             entry.config(bg="white")
 
-    # =====================================================
 
     def check_solution(self):
 
@@ -490,7 +471,6 @@ class GameScreen:
                     .upper()
                 )
 
-            # ==============================================
 
             if user_word != word["word"]:
 
@@ -518,7 +498,6 @@ class GameScreen:
                             bg=WRONG_COLOR
                         )
 
-        # ==============================================
 
         if correct:
 
