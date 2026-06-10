@@ -1,0 +1,20 @@
+# win_screen.py
+import tkinter as tk
+from config import *
+
+class WinScreen:
+    def __init__(self, root, restart_game, back_to_menu):
+        self.root = root
+
+        tk.Label(root, text="Победа!", font=("Arial", 50, "bold"),
+                 fg="#4CAF50").pack(pady=100)
+
+        btn_restart = tk.Button(root, text="Играть снова", font=("Arial", 18, "bold"),
+                                bg="black", fg="white", width=20, height=2,
+                                command=restart_game)
+        btn_restart.pack(pady=20)
+
+        btn_menu = tk.Button(root, text="В главное меню", font=("Arial", 14),
+                             bg="#666", fg="white", width=20, height=2,
+                             command=back_to_menu)
+        btn_menu.pack(pady=10)
